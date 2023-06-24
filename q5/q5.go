@@ -7,5 +7,24 @@ package q5
 //Dada uma string "s", retorne verdadeiro se for um palíndromo e falso caso contrário.
 
 func IsPalindrome(s string) bool {
-	return false
+	if len(s) <= 1 {
+		return true
+	}
+
+	frase := ""
+	novastring := strings.ToLower(s)
+	for _, letras := range novastring {
+		if (letras >= 'a' && letras <= 'z') || (letras >= '0' && letras <= '9') {
+			frase += string(letras)
+		}
+	}
+	frase = strings.TrimSpace(frase)
+
+	n := len(frase)
+	for i := 0; i < n/2; i++ {
+		if frase[i] != frase[n-i-1] {
+			return false
+		}
+	}
+	return true
 }
